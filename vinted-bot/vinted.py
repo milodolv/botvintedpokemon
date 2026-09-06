@@ -20,7 +20,6 @@ CHROME_HEADERS = {
     ),
     "Accept": "application/json, text/plain, */*",
     "Accept-Language": "fr-FR,fr;q=0.9,en-US;q=0.8,en;q=0.7",
-    "Accept-Encoding": "gzip, deflate, br",
     "Cache-Control": "no-cache",
     "Pragma": "no-cache",
     "Origin": VINTED_BASE_URL,
@@ -88,6 +87,7 @@ class VintedClient:
                 },
                 timeout=REQUEST_TIMEOUT,
             )
+            response.encoding = 'utf-8'
             print(f"Status: {response.status_code}, Contenu: {response.text[:300]}")
 
             if response.status_code in {401, 403}:
